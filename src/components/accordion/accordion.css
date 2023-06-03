@@ -1,0 +1,11 @@
+.picture-story {
+    width: 60%;
+    object-fit: contain;
+    padding-bottom: 2rem ;
+}
+
+.accordion {
+    background-color: transparent !important;
+    color: white !important;
+
+}

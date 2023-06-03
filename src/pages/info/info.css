@@ -1,0 +1,15 @@
+.background-info {
+    display: flex;
+    text-align: center;
+    background-image: url(../../assets/backgroundimages/2600_Origin_Story.webp);
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white;
+}
+
+.button-link {
+    text-decoration: none;
+    color: white;
+}

@@ -32,6 +32,8 @@ To run this project locally, follow these steps:
 4. Start the development server: `npm start`
 5. Open your browser and visit: [http://localhost:3000](http://localhost:3000)
 
+or view demo in [Overwatch-2-page](https://overwatch2-navi.netlify.app/)
+
 ## Contributing
 
 Contributions to this project are welcome! If you find any issues or have suggestions for improvements, please open an issue or submit a pull request.
