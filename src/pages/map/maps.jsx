@@ -1,20 +1,20 @@
-import MapCard from "./mapsCard";
 import { Box } from "@mui/material";
-import headerImageMaps from '../../assets/backgroundimages/montecarlo.jpg';
+import { MapCardSection } from "./mapsCardSection";
+import { SectionHeader } from "@/components/sectionHeader/sectionHeader";
+import { Footer } from "@/components/footer/footer.jsx";
+import { ImageMove } from "@/components/imageMove/imageMove";
+import headerImageMaps from "@/assets/backgroundimages/map.avif";
 
-function Maps() {
+export const Maps = () => {
     
-    return (    
-        <Box component="main">
-            <Box sx={{ zIndex: -1, position: 'absolute', width: '100%', top: 0 }}>
-                <img className="img-header" src={headerImageMaps} alt="imagen de fondo header mapas" loading="lazy" />
+    return (  
+        <>
+            <Box component="main">
+                <SectionHeader picture={headerImageMaps} name="Mapas" />
+                <MapCardSection />
+                <ImageMove />
             </Box>
-            <Box sx={{display: 'flex', justifyContent: 'center', alignItems: 'end', width: '100%',  position: 'relative',  zIndex: 1, color: 'white' }}>
-                <h2 className="title">Mapas</h2>
-            </Box>
-            <MapCard />
-        </Box> 
+            <Footer />
+        </>  
     )
 }
-
-export default Maps;

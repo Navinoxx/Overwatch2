@@ -1,18 +1,19 @@
-import { Box } from '@mui/material';
-import { HeroeCard } from './heroeCard';
-import headerImage from '../../assets/backgroundimages/1600_Header_v2.webp';
-import './heroes.css';
+import { Box } from "@mui/material";
+import { HeroCardSection } from "./heroCardSection";
+import { SectionHeader } from "@/components/sectionHeader/sectionHeader";
+import { Footer } from "@/components/footer/footer.jsx";
+import { ImageMove } from "@/components/imageMove/imageMove";
+import headerImage from "@/assets/backgroundimages/1600_Header_v2.webp";
 
-export default function Heroes() {
-    return (   
-        <Box component="main">
-            <Box sx={{ zIndex: -1, position: 'absolute', width: '100%', top: 0 }}>
-                <img className="img-header" src={headerImage} alt="imagen de fondo header heroes" loading="lazy" />
-            </Box>
-            <Box sx={{display: 'flex', justifyContent: 'center', alignItems: 'end', color: 'white' }}>
-                <h2 className="title">héroes</h2>
-            </Box>
-            <HeroeCard />
-        </Box> 
+export const Heroes = () => {
+    return ( 
+        <>
+            <Box component="main">
+                <SectionHeader picture={headerImage} name="Héroes" />
+                <HeroCardSection />
+                <ImageMove />
+            </Box> 
+            <Footer />
+        </>  
     );
 }

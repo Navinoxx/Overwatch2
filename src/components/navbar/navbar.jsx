@@ -10,13 +10,13 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import { Link } from 'react-router-dom';
-import navLogo from '../../assets/logos/Overwatch2_Primary_DKBKGD_compressed.svg';
-import navName from '../../assets/logos/Masthead_Overwatch2_Logo.webp';
+import navLogo from '@/assets/logos/Overwatch2_Primary_DKBKGD_compressed.svg';
+import navName from '@/assets/logos/Masthead_Overwatch2_Logo.webp';
 import '@fontsource/roboto/700.css';
 
 const pages = ['Informacion', 'Heroes', 'Modos', 'Mapas'];
 
-function ResponsiveAppBar() {
+export const ResponsiveAppBar = () => {
     const [anchorElNav, setAnchorElNav] = React.useState(null);
 
     const handleOpenNavMenu = (event) => {
@@ -29,7 +29,7 @@ function ResponsiveAppBar() {
 
     return (
     <Box component="header">
-        <AppBar component="nav" sx={{ borderRadius: '1rem', m: 2, position:'absolute', width: {xs: '95%', md: '98%'} }}>
+        <AppBar component="nav" sx={{ borderRadius: {xs: 0, md: '0.5rem'}, m: {xs: 0, md: 2}, position:'absolute', width: {xs: '100%', md: '98%'} }}>
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
                     <Box 
@@ -107,5 +107,3 @@ function ResponsiveAppBar() {
     </Box>
     );
 }
-
-export default ResponsiveAppBar;

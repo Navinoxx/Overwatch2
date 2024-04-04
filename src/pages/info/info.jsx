@@ -1,21 +1,31 @@
-import { Box } from '@mui/material';
-import InfoGame from './infoGame.jsx';
-import headerImageBack from '../../assets/backgroundimages/Desktop_Outro_Sky.jpg';
-import headerImage from '../../assets/backgroundimages/Desktop_Outro_Characters.webp';
+import { Box, Typography } from "@mui/material";
+import { InfoIntro } from "./infoIntro.jsx";
+import { InfoRoles } from "./infoRoles.jsx";
+import { InfoGame } from "./infoGame.jsx";
+import { SectionHeader } from "@/components/sectionHeader/sectionHeader.jsx";
+import { SectionMaskBorder } from "@/components/sectionMaskBorder/sectionMaskBorder.jsx";
+import { Footer } from "@/components/footer/footer.jsx";
+import headerImage from "@/assets/backgroundimages/info.avif";
+import TopDivider from '@/assets/maskDividers/Inverse_Top_Divider.svg';
+import BgImageDesktop from '@/assets/backgroundimages/Outro_Desktop.webp';
+import BgImageMobile from '@/assets/backgroundimages/Outro_Mobile.webp';
 
-export default function Info() {
-    return (   
-        <Box component="main">
-            <Box sx={{ zIndex: -1, position: 'absolute', width: '100%', top: 0 }}>
-            <img className="img-header" src={headerImage} alt="imagen de fondo header heroes" loading="lazy" />
-            </Box>
-            <Box sx={{ zIndex: -2, position: 'absolute', width: '100%', top: 0 }}>
-                <img className="img-header" src={headerImageBack} alt="imagen de fondo header heroes" loading="lazy" />
-            </Box>
-            <Box sx={{display: 'flex', justifyContent: 'center', alignItems: 'end', color: 'white' }}>
-                <h2 className="title">Información</h2>
-            </Box>
-            <InfoGame />
-        </Box> 
+export const Info = () => {
+    
+    return (
+        <>
+            <Box component="main" >
+                <SectionHeader picture={headerImage} name="Información del juego" />
+                <InfoIntro />
+                <InfoRoles />
+                <InfoGame />
+                <SectionMaskBorder Divider={TopDivider} BgImageDesktop={BgImageDesktop} BgImageMobile={BgImageMobile}>
+                    <Typography variant="h3" sx={{ color: 'white', textTransform: 'uppercase', textAlign: 'center', paddingTop: '30rem' }}>
+                        Forma equipo y <br/> únete a la lucha
+                    </Typography>
+                </SectionMaskBorder>
+            </Box> 
+            <Footer />
+        </>   
     );
 }

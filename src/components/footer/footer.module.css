@@ -1,0 +1,18 @@
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 2rem;
+    background: radial-gradient(50% 4798% at 50% 50.12%,#353e62 48%,#242a42 100%);
+}
+
+.img_socials {
+    width: 2rem;
+    filter: invert(80%);
+}
+
+.img_socials:hover {
+    filter: invert(100%);
+}

@@ -1,0 +1,14 @@
+.backgroundVideo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+}
+
+.img_header {
+    filter: invert(80%);
+}
+
+.img_header:hover {
+    filter: invert(100%);
+}

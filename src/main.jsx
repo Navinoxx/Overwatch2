@@ -1,11 +1,12 @@
-import ReactDOM from 'react-dom/client'
-import CssBaseline from '@mui/material/CssBaseline';
-import App from './App.jsx'
-import { StrictMode } from 'react';
+import { StrictMode } from "react";
+import ReactDOM from "react-dom/client"
+import CssBaseline from "@mui/material/CssBaseline";
+import App from "./App.jsx"
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <CssBaseline />
-    <App />
-  </StrictMode>
+
+    <StrictMode>
+        <CssBaseline />
+        <App />
+    </StrictMode>
 )

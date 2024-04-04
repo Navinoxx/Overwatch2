@@ -1,90 +1,65 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { Box, Button, Container, IconButton, Typography } from "@mui/material";
-import getHeroesRoles from "../../data/APIroles";
-import Tanks from "../../assets/rolesimages/Tank_Heroes_Desktop.webp";
-import Damages from "../../assets/rolesimages/Damage_Heroes_Full_Body_05.webp";
-import Supports from "../../assets/rolesimages/Support_Heroes_Full_Body_05.webp";
+import { ButtonHeroes } from "@/components/buttonHeroes/buttonHeroes";
+import { Box, Typography, Container, Grid } from "@mui/material";
+import { SectionMaskBorder } from "@/components/sectionMaskBorder/sectionMaskBorder";
+import { InfoRolesIcon } from "./infoRolesIcon";
+import { InfoRolesImage } from "./infoRolesImage";
+import getHeroesRoles from "@/data/APIroles";
+import BackImageMobile from "@/assets/backgroundimages/960_Heroes.webp";
+import BackImageDesktop from "@/assets/backgroundimages/1600_Heroes.webp";
+import InverseTopDivider from '@/assets/maskDividers/Inverse_Top_Divider.svg';
 
-export default function InfoRoles() {
+export const InfoRoles = () => {
     const [rol, setRol] = useState([]);
     const [activeStep, setActiveStep] = useState(0);
 
-    const images = [
-        { src: Tanks, alt: "Imagen tankes", id: 1 },
-        { src: Damages, alt: "Imagen daños", id: 2 },
-        { src: Supports, alt: "Imagen apoyos", id: 3 },
-    ];
-
     const handleButtonClick = (step) => {
-        setActiveStep(step);
+
+            setActiveStep(step);
+
     };
 
     useEffect(() => {
-        getHeroesRoles()
-            .then((res) => {
-                setRol(res)
-            });
+        getHeroesRoles().then(res => setRol(res));
     }, []);
 
     const selectedRole = rol[activeStep];
 
     return (
-        <Container sx={{ display: "flex", paddingTop: "2rem" }}>
-        <Box>
-            <Box
-            component="img"
-            sx={{
-                display: "block",
-                width: 500,
-                overflow: "hidden",
-            }}
-            src={images[activeStep].src}
-            alt={images[activeStep].alt}
-            />
-        </Box>
-        <Box sx={{ paddingLeft: "2rem" }}>
-            <Typography variant="h3" sx={{ paddingBottom: "2rem" }}>
-            Héroes
-            </Typography>
-            <Box sx={{ display: "flex", justifyContent: 'center', gap: "2rem" }}>
-            {rol.map((role, index) => (
-                <IconButton
-                key={index}
-                onClick={() => handleButtonClick(index)}
-                sx={{
-                    width: "4rem",
-                    height: "4rem",
-                    border: "0.1rem solid white",
-                    display: "flex",
-                    backgroundColor:
-                    activeStep === index
-                        ? "rgba(255, 255, 255, 0.3)"
-                        : "transparent",
-                }}
-                >
-                <Box
-                    component="img"
-                    className="abilitie-icon"
-                    src={role.icon}
-                    alt={role.name}
-                    loading="lazy"
-                />
-                </IconButton>
-            ))}
-            </Box>
-            <Typography variant="h3" sx={{ paddingY: "2rem" }}>
-            {selectedRole?.name}
-            </Typography>
-            <Typography variant="h5" sx={{ paddingBottom: "2rem" }}>
-            {selectedRole?.description}
-            </Typography>
-            <Button variant="contained">
-                <Link to="/heroes" className="button-link">
-                    Ver todos los héroes
-                </Link>
-            </Button>
-        </Box>
-        </Container>
+        <SectionMaskBorder Divider={InverseTopDivider} BgImageDesktop={BackImageDesktop} BgImageMobile={BackImageMobile}>
+            <InfoRolesImage activeStep={activeStep} />
+            <Container maxWidth="xl" sx={{ display: 'grid', paddingY: '5rem', height: { xs: 'auto', md: '100vh'}, color: 'white' }}>
+                <Grid container spacing={2}>
+                    <Grid item xs={8} sx={{ textAlign: 'center', marginX: 'auto' }}>
+                        <Typography gutterBottom variant="h3" sx={{ textTransform: 'uppercase' }}>
+                            Elige a tu héroe
+                        </Typography>
+                        <Typography gutterBottom variant="h5">
+                            En Overwatch 2, debes trabajar en equipo para completar los objetivos de la misión en cada partida. ¡Alcanza la victoria con las destrezas y habilidades de tu héroe!
+                        </Typography>
+                    </Grid>
+                    <Grid item xs={8} md={6} sx={{ position: 'relative', marginX: 'auto', zIndex: { md: -1 }}}>
+                        
+                    </Grid>
+                    <Grid item xs={8} md={6} sx={{ paddingLeft: '2rem', float: 'right', marginX: 'auto', height: { xs: 'auto', md: '50vh'} }}>
+                        <Typography variant="h3" sx={{ paddingBottom: '2rem', textTransform: 'uppercase', textAlign: 'left' }}>
+                            Roles
+                        </Typography>
+                        <Box sx={{ display: 'flex', gap: '2rem' }}>
+                            {rol.map((role, index) => (
+                                <InfoRolesIcon key={index} role={role} index={index} handleButtonClick={handleButtonClick} activeStep={activeStep} />
+                            ))}
+                        </Box>
+                        <Typography variant="h4" sx={{ paddingY: '2rem', textTransform: 'uppercase', textAlign: 'left' }}>
+                            {selectedRole?.name}
+                        </Typography>
+                        <Typography gutterBottom variant="h5" sx={{ paddingBottom: '2rem', textAlign: 'left' }}>
+                            {selectedRole?.description}
+                        </Typography>
+                        <ButtonHeroes text="Ver todos los héroes" to="/heroes"/>
+                    </Grid>
+                </Grid>
+            </Container>
+        </SectionMaskBorder>
     );
 }
