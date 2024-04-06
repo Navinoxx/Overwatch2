@@ -1,4 +1,5 @@
 import { Box } from "@mui/material";
+import { usePreloadImages } from "@/hooks/usePreloadImages";
 import Tanks from "@/assets/rolesimages/Tank_Heroes_Desktop.webp";
 import Damages from "@/assets/rolesimages/Damage_Heroes_Full_Body_05.webp";
 import Supports from "@/assets/rolesimages/Support_Heroes_Full_Body_05.webp";
@@ -11,6 +12,7 @@ const images = [
 ];
 
 export const InfoRolesImage = ({ activeStep }) => {
+    usePreloadImages([Tanks, Damages, Supports]);
 
     return (
         <Box

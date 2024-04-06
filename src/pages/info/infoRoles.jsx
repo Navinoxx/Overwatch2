@@ -14,9 +14,7 @@ export const InfoRoles = () => {
     const [activeStep, setActiveStep] = useState(0);
 
     const handleButtonClick = (step) => {
-
-            setActiveStep(step);
-
+        setActiveStep(step);
     };
 
     useEffect(() => {

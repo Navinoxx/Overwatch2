@@ -1,7 +1,8 @@
-import { Box, Container, Typography } from "@mui/material";
+import { Box, Container, Typography, useTheme, useMediaQuery } from "@mui/material";
 import { useState } from "react";
 import { SectionLineBorder } from "@/components/sectionLineBorder/sectionLineBorder";
 import { InfoGameIcon } from "./infoGameIcon";
+import { usePreloadImages } from "@/hooks/usePreloadImages";
 import AwardMobile from "@/assets/InfoGameImages/960_Award_Winning_Action.webp";
 import AwardDesktop from "@/assets/InfoGameImages/1600_Award_Winning_Action.webp";
 import CrossMobile from "@/assets/InfoGameImages/960_Cross_Play.webp";
@@ -59,13 +60,19 @@ const DATA = [
 
 export const InfoGame = () => {
     const [activeStep, setActiveStep] = useState(0);
+    const theme = useTheme();
+    const matches = useMediaQuery(theme.breakpoints.up('md'));
+
+    const images = DATA.map((data) => matches ? data.imageDesktop : data.imageMobile);
+    
+    usePreloadImages(images);
 
     const handleButtonClick = (step) => {
         setActiveStep(step);
     };
 
     return (
-        <SectionLineBorder Divider={TopSolidDivider} BgImageDesktop={DATA[activeStep].imageDesktop} BgImageMobile={DATA[activeStep].imageMobile} color="white">
+        <SectionLineBorder Divider={TopSolidDivider} BgImageDesktop={images[activeStep]} BgImageMobile={images[activeStep]} color="white">
             <Container maxWidth="xl" sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' }, color: 'white' }}>
                 <Box sx={{ display: 'inline-grid', gridAutoColumns: '2fr', paddingY: '5rem', textAlign: { xs: 'center', md: 'left' } }}>
                     <Typography gutterBottom variant="h2" sx={{ textTransform: 'uppercase' }}>
