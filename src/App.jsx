@@ -1,21 +1,12 @@
-import { createBrowserRouter, RouterProvider, ScrollRestoration, Outlet } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { Home } from "./pages/home/home.jsx";
 import { Heroes } from "./pages/heroes/heroes.jsx";
 import { HeroDetails } from "./pages/heroDetails/heroDetails.jsx";
 import { GameModes } from "./pages/gameModes/gameModes.jsx";
 import { Maps } from "./pages/map/maps.jsx";
 import { Info } from "./pages/info/info.jsx";
-import { ResponsiveAppBar } from "./components/navbar/navbar.jsx";
-
-const Layout = () => {
-    return (
-        <>
-            <ScrollRestoration />
-            <ResponsiveAppBar />
-            <Outlet />
-        </>
-    );
-}
+import { Error404 } from './pages/error/error404.jsx';
+import { Layout } from './components/layout/layout.jsx';
 
 const router = createBrowserRouter([
     {
@@ -28,11 +19,16 @@ const router = createBrowserRouter([
             },
             {
                 path: "/heroes",
-                element: <Heroes />,
-            },
-            {
-                path: "/heroes/:id",
-                element: <HeroDetails />,
+                children: [
+                    {
+                        index: true,
+                        element: <Heroes />,
+                    },
+                    {
+                        path: ":id",
+                        element: <HeroDetails />,
+                    }
+                ]
             },
             {
                 path: "/modos",
@@ -46,6 +42,10 @@ const router = createBrowserRouter([
                 path: "/informacion",
                 element: <Info />,
             },
+            {
+                path: "*",
+                element: <Error404 />,
+            }
         ]}
 ])
 

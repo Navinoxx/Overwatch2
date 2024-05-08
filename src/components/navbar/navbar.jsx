@@ -1,23 +1,15 @@
-import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import { Container } from '@mui/material';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import Menu from '@mui/material/Menu';
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import { AppBar, Box, Container, IconButton, Menu, MenuItem, Toolbar, Typography, Button } from "@mui/material";
 import MenuIcon from '@mui/icons-material/Menu';
-import Button from '@mui/material/Button';
-import MenuItem from '@mui/material/MenuItem';
-import { Link } from 'react-router-dom';
-import navLogo from '@/assets/logos/Overwatch2_Primary_DKBKGD_compressed.svg';
-import navName from '@/assets/logos/Masthead_Overwatch2_Logo.webp';
-import '@fontsource/roboto/700.css';
+import navLogo from "@/assets/logos/Overwatch2_Primary_DKBKGD_compressed.svg";
+import navName from "@/assets/logos/Masthead_Overwatch2_Logo.webp";
+import "@fontsource/roboto/700.css";
 
 const pages = ['Informacion', 'Heroes', 'Modos', 'Mapas'];
 
 export const ResponsiveAppBar = () => {
-    const [anchorElNav, setAnchorElNav] = React.useState(null);
+    const [anchorElNav, setAnchorElNav] = useState(null);
 
     const handleOpenNavMenu = (event) => {
         setAnchorElNav(event.currentTarget);

@@ -20,7 +20,7 @@ export const HeroDetailsMedia = ({ type, link }) => {
 
     if (type === 'video') {
         content = iframe;
-    } else if (type === 'short-story') {
+    } else if (type === 'short-story' || type === 'comic') {
         content = <ButtonHeroes text="Ver Comic" to={link} />;
     } else {
         content = null;
@@ -30,6 +30,6 @@ export const HeroDetailsMedia = ({ type, link }) => {
 };
 
 HeroDetailsMedia.propTypes = {
-    type: PropTypes.oneOf(['video', 'short-story']),
+    type: PropTypes.oneOf(['video', 'short-story', 'comic']),
     link: PropTypes.string,
 }

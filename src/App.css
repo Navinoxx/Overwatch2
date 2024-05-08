@@ -1,0 +1,15 @@
+html {
+    min-height: 100vh;
+    font-size: clamp(0.7rem, 1.5vw, 1rem);
+    
+}
+
+@supports not (font-size: clamp(1rem, 1.5vw, 1.5rem)) {
+    html {
+        font-size: min(max(0.7rem, 1.5vw), 1rem);
+    }
+}
+
+a {
+    text-decoration: none;
+}   
